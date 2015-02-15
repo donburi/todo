@@ -1,13 +1,29 @@
 <ul>
 	<% TODOS.each_with_index do |todo, i| %>
-		<li>
-			<% if todo.done %>
-			<strike><%= todo.text %></strike>
-			<% else %>
-				<%= todo.text %>
-				<a href='/done/<%= i %>'>Mark Complete</a>
+		
+		<% if todo.important %>
+
+			<li class="text-danger">
+				<% if todo.done %>
+				<strike><%= todo.text %></strike>
+				<% else %>
+					<%= todo.text %>
+					<a href='/done/<%= i %>'>Mark Complete</a>
+				<% end %>
+			</li>
+
+		<% else %>
+
+			<li>
+				<% if todo.done %>
+				<strike><%= todo.text %></strike>
+				<% else %>
+					<%= todo.text %>
+					<a href='/done/<%= i %>'>Mark Complete</a>
+				<% end %>
+			</li>
 			<% end %>
-		</li>
+
 	<% end %>
 </ul>
 
