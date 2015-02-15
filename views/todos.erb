@@ -1,0 +1,18 @@
+<ul>
+	<% TODOS.each_with_index do |todo, i| %>
+		<li>
+			<% if todo.done %>
+			<strike><%= todo.text %></strike>
+			<% else %>
+				<%= todo.text %>
+				<a href='/done/<%= i %>'>Mark Complete</a>
+			<% end %>
+		</li>
+	<% end %>
+</ul>
+
+<form action ="/add" method="POST">
+	<input type="text" name="todo" />
+	<input type="checkbox" name="important" />
+	<input type="submit" value="Add Todo" />
+</form>
