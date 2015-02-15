@@ -6,6 +6,7 @@
 			<li class="text-danger">
 				<% if todo.done %>
 				<strike><%= todo.text %></strike>
+				<a href='/reopen/<%= i %>'>Mark Active</a>
 				<% else %>
 					<%= todo.text %>
 					<a href='/done/<%= i %>'>Mark Complete</a>
@@ -17,6 +18,7 @@
 			<li>
 				<% if todo.done %>
 				<strike><%= todo.text %></strike>
+				<a href='/reopen/<%= i %>'>Mark Active</a>
 				<% else %>
 					<%= todo.text %>
 					<a href='/done/<%= i %>'>Mark Complete</a>

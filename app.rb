@@ -27,5 +27,10 @@ get '/done/:i' do
 	redirect('/')
 end
 
+get '/reopen/:i' do
+	TODOS[params[:i].to_i].done = false
+	redirect('/')
+end
+
 
 
