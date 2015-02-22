@@ -1,33 +1,45 @@
-<ul>
+<div class="row">
+  <div class="col-md-6">
+
+<table class="table table-condensed">
+
 	<% TODOS.each_with_index do |todo, i| %>
 		
 		<% if todo.important %>
 
-			<li class="text-danger">
 				<% if todo.done %>
-				<strike><%= todo.text %></strike>
-				<a href='/reopen/<%= i %>'>Mark Active</a>
+				<tr class="success">
+					<td class="danger"><strike><%= todo.text %></strike></td>
+					<td><a href='/reopen/<%= i %>' class="btn btn-primary btn-sm" role="button">Mark Active</a></td>
+			    </tr>
 				<% else %>
-					<%= todo.text %>
-					<a href='/done/<%= i %>'>Mark Complete</a>
+				<tr class="active">
+					<td class="danger"><%= todo.text %></td>
+					<td><a href='/done/<%= i %>' class="btn btn-primary btn-sm" role="button">Mark Complete</a></td>
+				</tr>
 				<% end %>
-			</li>
+				
 
 		<% else %>
 
-			<li>
-				<% if todo.done %>
-				<strike><%= todo.text %></strike>
-				<a href='/reopen/<%= i %>'>Mark Active</a>
+			<% if todo.done %>
+				<tr class="success">
+					<td><strike><%= todo.text %></strike></td>
+					<td><a href='/reopen/<%= i %>' class="btn btn-primary btn-sm" role="button">Mark Active</a></td>
+			    </tr>
 				<% else %>
-					<%= todo.text %>
-					<a href='/done/<%= i %>'>Mark Complete</a>
-				<% end %>
-			</li>
+				<tr class="active">
+					<td><%= todo.text %></td>
+					<td><a href='/done/<%= i %>' class="btn btn-primary btn-sm" role="button">Mark Complete</a></td>
+				</tr>
 			<% end %>
+		<% end %>
 
 	<% end %>
-</ul>
+</div>
+</div>
+
+</table>
 
 <form action ="/add" method="POST">
 	<input type="text" name="todo" />
